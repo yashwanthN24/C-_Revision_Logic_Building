@@ -241,6 +241,234 @@ class LinkedList{
         return temp1; // anything is fine as both are same node intersectio temp2 also same 
     }
 
+    Node* getMid(Node* head){
+        
+        Node* slow = head ; 
+        Node* fast = head;
+        Node* prev = nullptr;
+
+        while(fast!=nullptr && fast->next !=nullptr){
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        if(prev !=nullptr){
+            prev->next = nullptr;
+        }
+
+        return slow;
+    }
+
+
+    Node* merge(Node* left , Node* right){
+        LinkedList* ll = new LinkedList; // bad use dummy node method
+
+        Node* l = left; 
+        Node* r = right ;
+
+        while(l != nullptr &&  r != nullptr){
+            if(l->data < r->data){
+                ll->push_back(l->data);
+                l = l->next;
+            }else{
+                ll->push_back(r->data);
+                r = r->next;
+            }
+
+           
+        }
+
+
+         while(l != nullptr){
+                ll->push_back(l->data);
+                l = l->next;
+            }
+
+            while(r != nullptr){
+                ll->push_back(r->data);
+                r = r->next;
+            }
+        return ll->head;
+
+    }
+
+    Node* mergeSort2Linkedlist(Node* head){
+
+        if(head == nullptr || head->next == nullptr){
+            return head;
+        }
+
+        Node* rightHalfHead = getMid(head);
+        Node* left = mergeSort2Linkedlist(head);
+        Node* right = mergeSort2Linkedlist(rightHalfHead);
+
+        return merge(left , right );
+
+    }
+
+
+    Node* zigzagList(){
+        // get midNode 
+        Node* rightHalfHead =  getMid(head);
+
+        // reverse right half 
+        Node  *cur = rightHalfHead , *prev = nullptr , *next = nullptr;
+
+        while(cur != nullptr){
+            next = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = next;
+        }
+
+        Node* reverseRightHalfHead = prev;
+
+        // alternate merging 
+
+        Node *leftHead = head , *rightHead = reverseRightHalfHead , *tail = rightHead;
+
+        while(leftHead!= nullptr && rightHead != nullptr){
+            Node *nextLeft = leftHead->next;
+            leftHead->next = rightHead;
+            Node *nextRight = rightHead->next;
+            rightHead->next = nextLeft;
+
+            tail = rightHead;
+
+            leftHead = nextLeft;
+            rightHead = nextRight;
+
+        }
+
+        if(rightHead != nullptr){
+            tail->next = rightHead;
+        }
+
+        return head;
+
+
+    }
+
+    Node* deleteNNodesAfterMNodes(int M , int N){
+        Node* temp = head;
+        int i = 0 ;
+        
+        Node *prev = nullptr ,*temp2 = head;
+        // traverse M nodes 
+        while(i<M && temp2->next !=nullptr){
+            prev = temp2;
+            temp2 = temp2->next;
+            i++;
+        }
+
+        // track how many to deletes 
+        int j = 0;
+        Node* t = temp2;
+        while(j<N && t->next != nullptr){
+            t = t->next;
+            j++;
+        }
+
+        while(temp2 != t){
+             Node* cur = temp2;
+             temp2 = temp2->next;
+             delete cur;
+
+        }
+
+        prev->next = t;
+
+        return head;
+
+
+    }
+
+    Node* deleteNNodesAfterMNodesFinal(int M, int N) {
+
+    if (head == nullptr)
+        return head;
+
+    // If M = 0, delete the entire list
+    if (M == 0) {
+        while (head != nullptr) {
+            Node* temp = head;
+            head = head->next;
+            delete temp;
+        }
+        return nullptr;
+    }
+
+    Node* curr = head;
+
+    while (curr != nullptr) {
+
+        // Step 1: Keep M nodes
+        for (int i = 1; i < M && curr != nullptr; i++) {
+            curr = curr->next;
+        }
+
+        if (curr == nullptr)
+            break;
+
+        // Step 2: Delete next N nodes
+        Node* temp = curr->next;
+
+        for (int i = 0; i < N && temp != nullptr; i++) {
+            Node* del = temp;
+            temp = temp->next;
+            delete del;
+        }
+
+        // Step 3: Connect the kept part with the remaining list
+        curr->next = temp;
+
+        // Step 4: Continue from the remaining list
+        curr = temp;
+    }
+
+    return head;
+}
+
+    Node* segregateEvenOdd(Node* head) {
+    if (head == nullptr || head->next == nullptr)
+        return head;
+
+    Node *evenHead = nullptr, *evenTail = nullptr;
+    Node *oddHead = nullptr, *oddTail = nullptr;
+
+    Node* curr = head;
+
+    while (curr != nullptr) {
+        Node* nextNode = curr->next;
+        curr->next = nullptr;   // Detach current node
+
+        if (curr->data % 2 == 0) {
+            if (evenHead == nullptr) {
+                evenHead = evenTail = curr;
+            } else {
+                evenTail->next = curr;
+                evenTail = curr;
+            }
+        } else {
+            if (oddHead == nullptr) {
+                oddHead = oddTail = curr;
+            } else {
+                oddTail->next = curr;
+                oddTail = curr;
+            }
+        }
+
+        curr = nextNode;
+    }
+
+    if (evenHead == nullptr)
+        return oddHead;
+
+    evenTail->next = oddHead;
+
+    return evenHead;
+    }
+
     void printList(){
         Node* temp = head;
         while(temp != nullptr){
@@ -250,25 +478,73 @@ class LinkedList{
         cout << "null" << endl;
     }
 
+
+
 };
 
 int main(){
     LinkedList list;
-    list.push_back(1);
-    list.push_back(2);
-    list.push_back(3);
-    list.push_front(0);
-    list.insert(10 , 2);
-    list.insert(100 , 20);
-    list.insert(104 , 0);
-    list.insert(14 , 1);
-    list.pop_front();
-    list.printList(); // Output: 0 1 2 3 null
-    list.reverse();
+    // list.push_back(1);
+    // list.push_back(2);
+    // list.push_back(3);
+    // list.push_front(0);
+    // list.insert(10 , 2);
+    // list.insert(100 , 20);
+    // list.insert(104 , 0);
+    // list.insert(14 , 1);
+    // list.pop_front();
+    // list.printList(); // Output: 0 1 2 3 null
+    // list.reverse();
 
-    list.printList(); // Output: 3 2 1 0 null
-    list.remobeNthNodeFromEnd(2);
-    list.printList(); // Output: 3 2 0 null 
-    cout << list.detectCycleLoop() << endl;
+    // list.printList(); // Output: 3 2 1 0 null
+    // list.remobeNthNodeFromEnd(2);
+    // list.printList(); // Output: 3 2 0 null 
+    // cout << list.detectCycleLoop() << endl;
+
+
+
+    // LinkedList ll;
+
+    // ll.push_back(2);
+    // ll.push_back(6);
+    // ll.push_back(9);
+    // ll.push_back(3);
+
+    // LinkedList l2;
+
+    // l2.push_back(1);
+    // l2.push_back(10);
+    // l2.push_back(11);
+    // l2.push_back(4);
+
+    // l2.printList();
+    // cout << endl;
+    // l2.head =  l2.mergeSort2Linkedlist(l2.head);
+    // l2.printList();
+
+
+    LinkedList ll;
+
+    ll.push_back(1);
+    ll.push_back(2);
+    ll.push_back(3);
+    ll.push_back(4);
+    ll.push_back(5);
+    ll.push_back(6);
+    ll.push_back(7);
+    ll.push_back(8);
+
+    ll.printList();
+
+    ll.deleteNNodesAfterMNodesFinal(2 , 2);
+
+    ll.printList();
+
+    ll.head = ll.segregateEvenOdd(ll.head);
+
+    ll.printList();
+
     return 0;
 }
+
+// https://chatgpt.com/c/6a7c6569-dfa4-83e8-978b-a1749649a467

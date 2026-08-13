@@ -2,6 +2,28 @@
 
 using namespace std; 
 
+bool anagram(string str1 , string str2){
+    if(str1.length() != str2.length()){
+        return false;
+    }
+
+    int freq[26] = {0};
+
+    for(char ch : str1){
+        freq[ch-'a']++;
+    }
+
+    for(char ch : str2){
+        freq[ch-'a']--;
+        if(freq[ch-'a'] < 0){
+            return false;
+        }
+    }
+
+    return true;
+
+}
+
 bool validanagram(string str1 , string str2){
     if(str1.length() != str2.length()){
         return false;
