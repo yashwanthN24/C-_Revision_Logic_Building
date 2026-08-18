@@ -13,7 +13,11 @@ void printList(list<int> &ll){
 
 
 int main(){
-    list<int> ll;   // creates a linkedlist 
+    list<int> ll;   // creates a linkedlist  
+
+    // list is a implementation of doubly linkedlist in stl we use this onlky mostly 
+
+    // forward_list is implementation of singly linkedlist in stl we use this only when we want to save space and we dont want to traverse the list in reverse order
 
     ll.push_back(1);
     ll.push_back(2);
