@@ -75,3 +75,17 @@ Java is always pass-by-value, even for objects. But for objects, the value is a 
 
 
 ![alt text](image-1.png)
+
+
+Whenever accessing vector element via v[i] or v.back() or v.front() or v.at(i) make sure your vector is not empty i.e v.empty() returning true 
+
+Rule to remember: Whenever you use .back(), .front(), or access v[0], make sure the vector isn't empty first. A common pattern is:
+
+if (v.empty() || v.back() != x) {
+    v.push_back(x);
+}
+
+This works because of short-circuit evaluation of ||. (only first conjdition true means done no mor e checking of condifiton
+
+
+&& first condition false means doesnt check second cndition)
