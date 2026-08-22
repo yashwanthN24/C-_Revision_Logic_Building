@@ -21,3 +21,7 @@ public:
         return high;
     }
 };
+
+// https://chatgpt.com/c/6a8943fe-c4b0-83e8-8e3c-64b1f34ba44d
+
+// https://chatgpt.com/c/6a894623-61f0-83e8-ba2e-1c4e45570be8
