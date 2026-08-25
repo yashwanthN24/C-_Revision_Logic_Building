@@ -89,3 +89,50 @@ This works because of short-circuit evaluation of ||. (only first conjdition tru
 
 
 && first condition false means doesnt check second cndition)
+
+
+# string hashing
+
+
+![alt text](image-2.png)
+
+![alt text](image-3.png)
+
+![alt text](image-4.png)
+
+
+
+
+
+Ch-`0` concerts numbers in strong to number as ascii of zero is 48co
+nvert string numbers to number
+
+ch + ' ' (converts uppercase to lowercase as ascii value is 32 take 
+
+ch = 'A' 65 + 32 = 97 = 'a'  )
+
+ch - ' ' (converts lowercase to uppercase as ascii value is 32 take a = 97 - 32 = 65 = 'A'  )   
+
+
+
+https://chatgpt.com/share/6a8b5c4e-3f0c-83e9-9f56-d23c072dfb23?ogimg=plain
+
+https://chatgpt.com/share/6a86b085-36ec-83ee-a829-037ccb512fbc?ogimg=plain
+
+https://chatgpt.com/share/6a83e21f-d7e4-83e8-b02f-500cd3cc7d69?ogimg=plain
+
+https://chatgpt.com/share/6a83e0a8-4150-83ee-9172-b705c00b7410?ogimg=plain
+
+https://chatgpt.com/share/6a8382f5-04d0-83ee-8739-d5cac5dc0fb4?ogimg=plain
+
+https://chatgpt.com/share/6a838104-7458-83e8-afb3-33f59f157af2?ogimg=plain
+
+https://chatgpt.com/share/6a837dc9-9a90-83e8-9dfc-2f735bb68f23?ogimg=plain
+
+https://chatgpt.com/share/6a83792b-bda8-83e8-b681-61c1a147619b?ogimg=plain
+
+https://chatgpt.com/share/6a83676d-e2f0-83ee-bd62-dd8ac891411d?ogimg=plain
+
+https://chatgpt.com/share/6a7b2fb6-1438-83e8-9981-8095dd7871ff?ogimg=plain
+
+![alt text](image-5.png)

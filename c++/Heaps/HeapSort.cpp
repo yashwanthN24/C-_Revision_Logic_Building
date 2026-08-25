@@ -75,5 +75,5 @@ void heapsort(vector<int> &arr){
     // 1) convert the arrya into max heap by calling heapify for root 0th index node 
         // for non-leaf node i.e n/2 to 0 nodes call heapify 
 
-        // we get max heap from this now swpa first element with last element of heap size then keep reducing the heap sisze and repeat this proess
+        // we get max heap from this now swpa first element with last element of heap  then keep reducing the heap sisze and repeat this proess
  }

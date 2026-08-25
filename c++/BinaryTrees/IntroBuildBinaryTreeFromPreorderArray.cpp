@@ -2,6 +2,7 @@
 #include <vector>
 #include <queue>
 #include <map>
+#include <stack>
 
 
 using namespace std;
@@ -70,6 +71,54 @@ class BinaryTree{
         preOrder(root->left);
         preOrder(root->right);
     }   
+
+    void iterativePreOrder(Node* root){
+        if(root == nullptr) return;
+
+        stack<Node*> st;
+        
+        // add root node to stack 
+        st.push(root);
+
+        while(!st.empty()){
+            // print node and add its right child first and then left child because this is predorder we want the next left so we aeadding right first and left second as its a stack LIFO 
+
+            Node* node = st.top();
+
+            st.pop(); 
+
+            cout << node->data << " ";
+
+            // add right child 
+            if(node->right != nullptr){
+                st.push(node->right);
+            }
+
+            // Add left child 
+            if(node->left != nullptr){
+                st.push(node->left);
+            }
+        }
+    }
+
+    void iterativeInorder(Node* root){
+        stack<Node*> st;
+
+        Node* node = root;
+
+        while(true){
+            if(node != nullptr){
+                st.push(node);
+                node = node->left;
+            }else{
+                if(st.empty()) break;
+                node = st.top();
+                st.pop();
+                cout << node->data << " ";
+                node = node->right;
+            }
+        }
+    }
 
     void InOrder(Node* root){
         if(root == nullptr){
@@ -461,6 +510,50 @@ class BinaryTree{
         }
     }   
 
+
+
+
+    Node* InorederSuccessor(Node* root , Node* node){
+        Node* successor = nullptr;
+        // inoreder successor means greater than the value of node so obvuously right side in bst
+        while(root != nullptr){
+            if(root->data <= node->data){
+                root = root->right;
+            }else{
+                successor = root;
+                root = root->left;
+            }
+        }
+        return successor; // return s the inorder successro node of binary tree with nodes value as val
+    }
+
+    void iterativeInorderTraversal(Node* root){
+        if(root == nullptr) return;
+
+        stack<Node*> st;
+
+        Node* curr = root ; 
+
+        while (curr != nullptr || !st.empty()){
+            
+            // go as far left as possible 
+            while(curr != nullptr){
+                st.push(curr);
+                curr = curr->left;
+            }
+
+            curr = st.top();
+            st.pop();
+
+            cout << curr->data << " " ; 
+
+            curr = curr->right;
+        }
+
+
+        
+    }
+
 };
 
 
@@ -482,9 +575,18 @@ int main(){
     cout << bt.root->right->data << endl;
     bt.preOrder(bt.root);
     cout << endl;
+
+    bt.iterativePreOrder(bt.root);
+    cout << endl;
     bt.InOrder(bt.root);
 
     cout << endl;
+
+    bt.iterativeInorder(bt.root);
+    cout << endl << endl;
+
+    bt.iterativeInorderTraversal(bt.root);
+    cout << endl << endl;
 
     bt.PostOrder(bt.root);
 

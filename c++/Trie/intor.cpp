@@ -37,7 +37,7 @@ class Trie{
 
             for (int i = 0; i < word.length(); i++){
                 char c = word.at(i);
-                if(temp->children.count(c) == 0){
+                if(temp->children.count(c) == 0){  // or can use temp.contains(c)
                     temp->children[c] = new Node();
                 }
                 temp = temp->children[c];
@@ -48,7 +48,7 @@ class Trie{
         
 
         void printTrie() {
-        printTrieHelper(root, "");
+            printTrieHelper(root, "");
         }
 
 
