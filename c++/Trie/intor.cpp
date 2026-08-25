@@ -7,7 +7,7 @@ using namespace std;
 
 class Node{
     public:
-        unordered_map<char, Node *> children;
+        unordered_map<char, Node *> children; // {} empty map 
         bool endofword ;
 
         Node(){
@@ -29,7 +29,7 @@ class Trie{
         Node *root; 
 
         Trie(){
-            root = new Node();
+            root = new Node(); // {} empty map and endofWord = false;
         }
 
         void insert(string word){
