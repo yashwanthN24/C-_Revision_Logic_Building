@@ -408,6 +408,28 @@ If the DFS completes without such a condition, no cycle exists.
     path.pop_back();
     visited[src] = false;
 }
+    /*
+    
+        Remember the distinction
+
+DFS/BFS traversal of entire graph:
+
+for every vertex:
+    if not visited:
+        DFS(vertex)
+
+➡️ Need to handle disconnected components.
+
+All paths from src to dest:
+
+DFS(src, dest)
+
+➡️ Only the component containing src matters.
+
+So your all-paths algorithm is perfectly fine for a disconnected graph—it just won't find paths in unrelated components because those aren't paths from your chosen src to dest.
+    
+    */
+
 
        void printAllpathsFromSrctoDst(int src , int dest){
           vector<bool> visited(V, false);
@@ -505,7 +527,6 @@ int main(){
     // cout << graph.detectCycleInDirectedGraph() << endl;
 
     cout << graph.isBipartiteGraph();
-
 
     cout << endl << graph.isBipartiteGraph2() << endl;
 
@@ -688,3 +709,7 @@ list<int>* matrixToList(vector<vector<int>>& matrix, bool undirected) {
 
 
 */
+
+
+
+// https://chatgpt.com/c/6a917f71-f180-83ee-b989-89fc37ad9653
