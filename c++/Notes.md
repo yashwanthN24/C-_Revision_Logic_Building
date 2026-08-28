@@ -104,8 +104,10 @@ This works because of short-circuit evaluation of ||. (only first conjdition tru
 
 
 
-Ch-`0` concerts numbers in strong to number as ascii of zero is 48co
+Ch-`0` concerts numbers in string to number as ascii of zero is 48co
 nvert string numbers to number
+
+ch + '0' converts number to string as ascii of zero is 48 convert number to string
 
 ch + ' ' (converts uppercase to lowercase as ascii value is 32 take 
 
@@ -136,3 +138,10 @@ https://chatgpt.com/share/6a83676d-e2f0-83ee-bd62-dd8ac891411d?ogimg=plain
 https://chatgpt.com/share/6a7b2fb6-1438-83e8-9981-8095dd7871ff?ogimg=plain
 
 ![alt text](image-5.png)
+
+
+
+
+
+
+
