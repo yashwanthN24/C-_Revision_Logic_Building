@@ -77,6 +77,46 @@ class Graph{
 
        }
 
+       bool cycleDetectionInDirectedGraphUsingKahnAlgorithmTopologicalsortbfs(){
+            vector<int> indegree(V , 0);
+            calcIndegree(indegree);
+
+            queue<int> q;
+
+            // finding starting node indegree  0 
+            for(int i =0 ; i<indegree.size();i++){
+                if(indegree[i] == 0){
+                    q.push(i);
+                }   
+            }
+
+            while(!q.empty()){
+                int curr = q.front();
+                q.pop();
+
+                // cout << curr << " ";
+
+                for(int val : l[curr]){
+                    indegree[val]--;
+                    if(indegree[val] == 0){ // no pending dependencies 
+                        q.push(val);
+                    }   
+                }
+            }
+
+
+            //  check indegree array if any vertex indegree non-zero cycle exists else if allvertyex indegree 0 hen no cycle 
+
+            for(int i = 0 ; i<indegree.size() ; i++){
+                if(indegree[i] != 0){
+                    return true;
+                }
+            }
+
+            return false;
+
+       }
+
        void topologicalSortDfsUtil(int  src , vector<bool> &visited , stack<int> &stack){
 
             visited[src] = true;
@@ -114,20 +154,37 @@ class Graph{
 
     int main(){
 
-        Graph graph(6 , false);
+        // Graph graph(6 , false);
 
-        graph.addEdge(5,0);
-        graph.addEdge(5,2);
-        graph.addEdge(4,0);
-        graph.addEdge(4,1);
-        graph.addEdge(2,3);
-        graph.addEdge(3,1);
-        graph.topologicalSortDfs();
+        // graph.addEdge(5,0);
+        // graph.addEdge(5,2);
+        // graph.addEdge(4,0);
+        // graph.addEdge(4,1);
+        // graph.addEdge(2,3);
+        // graph.addEdge(3,1);
+        // graph.topologicalSortDfs();
+
+        // cout << endl;
+        // graph.topologicalSortBFSKahnsAlogorithm();
+
+        Graph graph(4 , false); // directed graph of 4 vertices 
+
+        graph.addEdge(1 , 2);
+        graph.addEdge(0 , 2);
+        graph.addEdge(2 , 3);
+        graph.addEdge(3 , 1);
+
+        graph.topologicalSortBFSKahnsAlogorithm(); 
+
 
         cout << endl;
-        graph.topologicalSortBFSKahnsAlogorithm();
+
+        cout << graph.cycleDetectionInDirectedGraphUsingKahnAlgorithmTopologicalsortbfs();
+        
 
     }
 
 
     // https://chatgpt.com/c/6a919790-cab4-83e8-b46d-8fbf2c46d81f
+
+    
