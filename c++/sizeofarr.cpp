@@ -23,6 +23,9 @@ int main(){
 
 
     // in java 
+    // \u000d System.out.print("Hello");  
+    // This will enter and then that line gets excuted like a normal kjava line works in single commet but wont work in multi as after enter also it still stays inside a multi line commet itself 
+    
 
     // #define true 0 
 
