@@ -18,5 +18,18 @@ int main(){
 
     // Arrays.fill(arr , -1) fills all values with -1 value
     // int arr[] = new int[10];
-    
+
+    cout << "\\n" << endl ; // to print \n \escaoes trghe second\
+
+
+    // in java 
+
+    // #define true 0 
+
+    // #define H printf
+
+
+    // print hello without using printf 
+
+    // #define H printf("Hello World"); // in man jys do H done 
 }
