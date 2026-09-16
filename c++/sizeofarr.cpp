@@ -27,12 +27,13 @@ int main(){
     // This will enter and then that line gets excuted like a normal kjava line works in single commet but wont work in multi as after enter also it still stays inside a multi line commet itself 
     
 
-    // #define true 0 
+    // #define true 0 (thid the c/c++ preprocessor to blindly replace every instance of the word true with 0 i.e false before
+    // the code even compiler thats why its called preprocessor)
 
     // #define H printf
 
 
     // print hello without using printf 
 
-    // #define H printf("Hello World"); // in man jys do H done 
+    // #define H printf("Hello World"); // in main just do H done 
 }
