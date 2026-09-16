@@ -154,3 +154,5 @@ https://coddy.tech/learn/c/object_oriented_programming/destructor_pattern
 
 https://chatgpt.com/uc/6aaae5e0-2aac-83ea-a7d1-c4a5e3001c1a
 
+https://cppreference.com/
+
