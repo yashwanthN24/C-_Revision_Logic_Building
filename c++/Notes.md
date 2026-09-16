@@ -140,8 +140,17 @@ https://chatgpt.com/share/6a7b2fb6-1438-83e8-9981-8095dd7871ff?ogimg=plain
 ![alt text](image-5.png)
 
 
+## C language Design patterns and C++ Learning 
 
+https://www.learncpp.com/
 
+https://coddy.tech/landing/c?af_sub1=learn-c.org
 
+https://learn-c.org/
 
+https://coddy.tech/landing/c?af_sub1=learn-c.org
+
+https://coddy.tech/learn/c/object_oriented_programming/destructor_pattern
+
+https://chatgpt.com/uc/6aaae5e0-2aac-83ea-a7d1-c4a5e3001c1a
 
